@@ -73,3 +73,9 @@ h2{
 position: relative;
 left: 50px;
 }
+.outro{
+  text-align: center;
+  font-size: bold;
+  position: relative;
+  bottom: -20px;
+}

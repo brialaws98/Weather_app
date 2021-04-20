@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap");
+h1 {
+  font-family: "New Tegomin", serif;
+}
+form {
+  position: relative;
+  bottom: -30px;
+  max-width: 550px;
+  margin: 0 auto;
+}
+.weather-app {
+  border: 2px solid #000;
+  border-radius: 20px;
+  width: 550px;
+  margin: 20px auto;
+  padding: 20px 20px;
+  position: relative;
+  top: 20px;
+  max-width: 100%;
+}
+
+ul,
+li {
+  list-style: none;
+}
+button {
+  color: #fff;
+  padding: 1px;
+  background: rgb(69, 160, 17);
+  border: 2px solid #000;
+  border-radius: 20px;
+  box-shadow: 5px 4px 18px #000;
+  transition: all 200ms ease;
+  cursor: pointer;
+}
+button:hover {
+  color: #fff;
+  background: rgb(3, 83, 3);
+}
+col-3 {
+  margin-top: 020px;
+  position: relative;
+  top: -20px;
+}
+.whole {
+  background: linear-gradient(
+    68.6deg,
+    rgb(252, 165, 241) 1.8%,
+    rgb(181, 255, 255) 100.5%
+  );
+}
+

@@ -79,3 +79,6 @@ left: 50px;
   position: relative;
   bottom: -20px;
 }
+.description{
+text-align: right;
+}

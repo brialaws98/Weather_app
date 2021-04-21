@@ -54,6 +54,8 @@ function displayWeather(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  celTemperature=response.data.main.temp;
 }
 
 
@@ -87,5 +89,18 @@ function displayCurrentLocation(event) {
 let currentLocationButton=document.querySelector("#current-location-button");
   currentLocationButton.addEventListener("click", displayCurrentLocation);
 
-  searchHome("Baltimore");
+ 
+  function displayFaTemperature(event){
+    event.preventDefault();
+  let temperatureElment= document.querySelector("#temperature");
+  let faTemperature= (celTemperature * 9) / 5+ 32;
+  temperatureElment.innerHTML= Math.round(faTemperature);
 
+  }
+
+  let celTemperature=null;
+
+let faremheitLink= document.querySelector("#farenheit-link");
+faremheitLink.addEventListener("click", displayFaTemperature);
+
+searchHome("Baltimore");

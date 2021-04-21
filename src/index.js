@@ -73,8 +73,11 @@ function handleSubmit(event) {
 }
 
 
+
 let seachCity = document.querySelector("#search-city");
 searchCity.addEventListener("submit", handleSubmit);
+
+
 
 function searchLocation(position) {
   let apiKey = "a1efc4a7356688ae30bb6a1809d1bb99";
@@ -89,18 +92,33 @@ function displayCurrentLocation(event) {
 let currentLocationButton=document.querySelector("#current-location-button");
   currentLocationButton.addEventListener("click", displayCurrentLocation);
 
- 
-  function displayFaTemperature(event){
+ function displayFahrenheitTemperature(event) {
     event.preventDefault();
-  let temperatureElment= document.querySelector("#temperature");
-  let faTemperature= (celTemperature * 9) / 5+ 32;
-  temperatureElment.innerHTML= Math.round(faTemperature);
+    let temperatureElement = document.querySelector("#temperature");
+    ceLink.classList.remove("active");
+    fahrenheitLink.classList.add("active");
+    let fahrenheitTemperature = (celTemperature * 9 / 5) + 32;
+    
+    temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
 
-  }
+function displayCelTemperature(event){
+   event.preventDefault();
+ 
+     let temperatureElement = document.querySelector("#temperature");
+      ceLink.classList.add("active");
+      fahrenheitLink.classList.remove("active");
+      
+    temperatureElement.innerHTML= Math.round(celTemperature);
+}
 
-  let celTemperature=null;
 
-let faremheitLink= document.querySelector("#farenheit-link");
-faremheitLink.addEventListener("click", displayFaTemperature);
+let celsiusTemperature = null;
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let ceLink= document.querySelector("#celsius-link");
+ ceLink.addEventListener("click", displayCelTemperature);
 
 searchHome("Baltimore");

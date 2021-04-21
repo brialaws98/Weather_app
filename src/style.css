@@ -10,7 +10,7 @@ form {
 }
 .weather-app {
   border: 2px solid #000;
-  border-radius: 20px;
+  border-radius: 20px 20px 40px 20px;
   width: 550px;
   margin: 20px auto;
   padding: 20px 20px;

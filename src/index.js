@@ -41,6 +41,8 @@ let year = currentTime.getFullYear();
 today.innerHTML = `${days[dayIndex]}, ${hours}:${minutes}`;
 detailToday.innerHTML = `${months[month]} ${date}, ${year}`;
 
+  let forcastHTML=`<div class="row">`;
+forcastElement.innerHTML=forcastHTML;
 function displayWeather(response) {
   let iconElement = document.querySelector("#icon");
 
@@ -78,7 +80,6 @@ let seachCity = document.querySelector("#search-city");
 searchCity.addEventListener("submit", handleSubmit);
 
 
-
 function searchLocation(position) {
   let apiKey = "a1efc4a7356688ae30bb6a1809d1bb99";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
@@ -114,6 +115,8 @@ function displayCelTemperature(event){
 
 
 let celsiusTemperature = null;
+
+displayForcast();
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);

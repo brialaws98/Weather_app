@@ -41,8 +41,49 @@ let year = currentTime.getFullYear();
 today.innerHTML = `${days[dayIndex]}, ${hours}:${minutes}`;
 detailToday.innerHTML = `${months[month]} ${date}, ${year}`;
 
+function displayForcast(){
+  let forcastElement=document.querySelector("#forcast");
+
   let forcastHTML=`<div class="row">`;
+  let days= ["Thu", "Fri", "Sat", "Sun"];
+   days.forEach(function (day) {
+   forcastHTML= 
+     forcastHTML + `
+     <div class="col-3">
+  <div class="weather-forcast-date">
+     ${day}
+ </div>
+ <div>
+    <img
+     src="https://openweathermap.org/img/wn/50d@2x.png"
+     alt=""
+     width="36"
+  />
+ </div>
+ 
+ <div class="weather-forcast-temperature">
+ <span class="weather-forcast-max">
+   18
+ </span>|
+ <span class="weather-forcast-min">
+ 12
+ </span>    
+ </div>
+ 
+   </div>
+ `;
+});
+forcastHTML= forcastHTML + `</div>`;
 forcastElement.innerHTML=forcastHTML;
+
+ 
+
+ 
+ 
+
+   
+}
+
 function displayWeather(response) {
   let iconElement = document.querySelector("#icon");
 

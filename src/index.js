@@ -41,22 +41,38 @@ let year = currentTime.getFullYear();
 today.innerHTML = `${days[dayIndex]}, ${hours}:${minutes}`;
 detailToday.innerHTML = `${months[month]} ${date}, ${year}`;
 
-function displayForcast(response){
-     console.log(response.data.daily[0]);
-  let forcastElement=document.querySelector("#forcast");
+function formatDay(timestamp) {
+  let date= new Date(timestamp * 1000);
+  let day= date.getDay();
+  let days= [
+    "Sun",
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thur",
+    "Fri",
+    "Sat"
+  ]
 
-  let forcastHTML=`<div class="row">`;
-  let days= ["Thu", "Fri", "Sat", "Sun"];
-   days.forEach(function (day) {
-   forcastHTML= 
-     forcastHTML + `
+    return days[day];
+}
+
+function displayForecast(response){
+  let forecast= response.data.daily;
+  let forecastElement=document.querySelector("#forecast");
+
+  let forecastHTML=`<div class="row">`;
+   forecast.forEach(function (forecastDay, index) {
+ if (index < 4) {
+   forecastHTML= 
+     forecastHTML + `
      <div class="col-3">
   <div class="weather-forcast-date">
-     ${day}
+     ${formatDay(forecastDay.dt)}
  </div>
  <div>
     <img
-     src="https://openweathermap.org/img/wn/50d@2x.png"
+     src= "https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png";
      alt=""
      width="36"
   />
@@ -64,18 +80,18 @@ function displayForcast(response){
  
  <div class="weather-forcast-temperature">
  <span class="weather-forcast-max">
-   18
+   ${Math.round(forecastDay.temp.max)}°
  </span>|
  <span class="weather-forcast-min">
- 12
+ ${Math.round(forecastDay.temp.min)}°
  </span>    
  </div>
  
    </div>
- `;
+ `;}
 });
-forcastHTML= forcastHTML + `</div>`;
-forcastElement.innerHTML=forcastHTML;
+forecastHTML= forecastHTML + `</div>`;
+forecastElement.innerHTML=forecastHTML;
 }
 
 function getForecast(coordinates) {
@@ -84,7 +100,7 @@ let apiKey = "a1efc4a7356688ae30bb6a1809d1bb99";
 let apiUrl=
 `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`
   
-axios.get(apiUrl).then(displayForcast);
+axios.get(apiUrl).then(displayForecast);
 }
 
 function displayWeather(response) {
